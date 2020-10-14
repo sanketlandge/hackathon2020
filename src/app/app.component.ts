@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {AwsserviceService} from './awsservice.service';
+import {Model} from './model';
 
 export interface Summary {
   fundType: string;
@@ -22,7 +24,24 @@ const ELEMENT_DATA: Summary[] = [
 })
 
 export class AppComponent {
+
+  constructor(
+    private awsService: AwsserviceService
+  ) {
+  }
+
   title = 'Distribution Optimizer Summary';
   tableColumns: string[] = ['fundType', 'total', 'jPMImport', 'uOIImport', 'confirmed'];
   dataSource = ELEMENT_DATA;
+  funds: string[] = ['VASIF', 'VISIF'];
+  selectedFund: string;
+  models: Model[];
+
+  retrievData(): void {
+    console.log('selected fund is - ' + this.selectedFund);
+    this.awsService.getFundInformation().subscribe((data: any[]) => {
+      console.log(data);
+      this.models = data;
+    });
+  }
 }
