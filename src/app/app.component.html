@@ -45,6 +45,7 @@
     background-color: #990000;
     color: white;
     font-weight: 600;
+    text-align: center;
   }
 
   .toolbar img {
@@ -206,6 +207,10 @@
     background-color: #990000;
   }
 
+  .banner_text{
+
+  }
+
   .terminal pre {
     font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
     color: white;
@@ -312,10 +317,7 @@
 </style>
 
 <!-- Toolbar -->
-<div class="toolbar" role="banner">
-
-  <span></span>
-  <div class="spacer"></div>
+<div class="toolbar text-center">
 
 </div>
 
@@ -323,7 +325,7 @@
 
   <!-- Highlight Card -->
   <div class="card highlight-card card-small ">
-    <span>{{ title }}</span>
+    <h3>{{ title }}</h3>
   </div>
 
   <!-- Resources -->
@@ -395,32 +397,32 @@
   <div class="container">
     <table class="table table-bordered table-striped" >
       <tr class="text_bold text-center">
-        <td>Description </td>
+        <td class="text-left">Description </td>
         <td>Amount</td>
         <td>DPU</td>
       </tr>
       <tr>
-        <th class="text-center">Interest (subject to WHT)</th>
+        <th class="text-left">Interest (subject to WHT)</th>
         <td *ngFor="let model of models">{{model.components.interest}}</td>
         <td *ngFor="let model of models">{{model.dpu.interest}}</td>
       </tr>
       <tr>
-        <th class="text-center">Interest (Not subject to WHT)</th>
+        <th class="text-left">Interest (Not subject to WHT)</th>
         <td *ngFor="let model of models">{{model.components.interestNotWht}}</td>
         <td *ngFor="let model of models">{{model.dpu.interestNotWht}}</td>
       </tr>
       <tr>
-        <th class="text-center">Franking credits gross up</th>
+        <th class="text-left">Franking credits gross up</th>
         <td *ngFor="let model of models">{{model.components.frankingCredits}}</td>
         <td *ngFor="let model of models">{{model.dpu.frankingCredits}}</td>
       </tr>
       <tr>
-        <th class="text-center">Franked Dividents(Net)</th>
+        <th class="text-left">Franked Dividents(Net)</th>
         <td *ngFor="let model of models">{{model.components.frankedDiv}}</td>
         <td *ngFor="let model of models">{{model.dpu.frankedDiv}}</td>
       </tr>
-      <tr>
-        <th class="text-center">Total Distribution</th>
+      <tr class="text-left text_bold">
+        <th class="text-left">Total Distribution</th>
         <td *ngFor="let model of models">{{model.components.total}}</td>
         <td *ngFor="let model of models">{{model.dpu.total}}</td>
       </tr>
@@ -434,7 +436,7 @@
   <div class="container">
     <div class="row">
       <div class="col text-right">
-        <button mat-raised-button  (click)="exportCSV()">Export to CSV</button>
+        <button mat-raised-button (click)="exportCSV()">Export to CSV</button>
       </div>
     </div>
   </div>
