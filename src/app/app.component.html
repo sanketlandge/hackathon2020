@@ -42,7 +42,7 @@
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: #1976d2;
+    background-color: #990000;
     color: white;
     font-weight: 600;
   }
@@ -128,7 +128,7 @@
   }
 
   .card.highlight-card {
-    background-color: #1976d2;
+    background-color: #990000;
     color: white;
     font-weight: 600;
     border: none;
@@ -195,6 +195,15 @@
     line-height: 0;
     padding: 14px 0;
     text-indent: 4px;
+  }
+
+  .add_padding{
+    padding: 14px 0;
+    margin-left: 15px;
+  }
+
+  .vg_color{
+    background-color: #990000;
   }
 
   .terminal pre {
@@ -313,7 +322,7 @@
 <div class="content" role="main">
 
   <!-- Highlight Card -->
-  <div class="card highlight-card card-small">
+  <div class="card highlight-card card-small ">
     <span>{{ title }}</span>
   </div>
 
@@ -329,31 +338,31 @@
       </tr>
       <tr>
         <td>Domestic Wholesale Funds</td>
-        <td>10</td>
+        <td>19</td>
         <td>2</td>
         <td>8</td>
         <td>0</td>
       </tr>
       <tr>
         <td>International Wholesale Funds</td>
-        <td> 10</td>
+        <td>56</td>
         <td>5</td>
         <td>5</td>
         <td>2</td>
       </tr>
       <tr>
         <td>Diversified Funds</td>
-        <td> 10</td>
+        <td>9</td>
         <td>5</td>
         <td>5</td>
         <td>2</td>
       </tr>
       <tr>
         <td class="text_bold">Total</td>
-        <td>10</td>
-        <td>5</td>
-        <td>5</td>
-        <td>2</td>
+        <td>84</td>
+        <td>12</td>
+        <td>18</td>
+        <td>4</td>
       </tr>
     </table>
   </div>
@@ -374,7 +383,7 @@
             </mat-select>
           </mat-form-field>
         </form>
-          <div class="float-right">
+          <div class="float-right add_padding">
           <button mat-raised-button  (click)="retrievData()">Search</button>
           </div>
         </div>
@@ -409,6 +418,15 @@
         <th class="text-center">Franked Dividents(Net)</th>
         <td *ngFor="let model of models">{{model.components.frankedDiv}}</td>
         <td *ngFor="let model of models">{{model.dpu.frankedDiv}}</td>
+      </tr>
+      <tr>
+        <th class="text-center">Total Distribution</th>
+        <td *ngFor="let model of models">{{model.components.total}}</td>
+        <td *ngFor="let model of models">{{model.dpu.total}}</td>
+      </tr>
+      <tr class="text_bold text-center">
+        <th class="text-center">Units On Issue</th>
+        <td *ngFor="let model of models">{{model.uoi}}</td>
       </tr>
     </table>
   </div>

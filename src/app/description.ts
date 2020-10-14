@@ -3,4 +3,5 @@ export class Description{
   interestNotWht: string;
   frankedDiv: string;
   frankingCredits: string;
+  total: string;
 }
