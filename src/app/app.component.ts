@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {AwsserviceService} from './awsservice.service';
 import {Model} from './model';
+import {Angular5Csv} from 'angular5-csv/dist/Angular5-csv';
+import {ExportFileModel} from './export-file-model';
 
 export interface Summary {
   fundType: string;
@@ -36,12 +38,37 @@ export class AppComponent {
   funds: string[] = ['VASIF', 'VISIF'];
   selectedFund: string;
   models: Model[];
+  tableData: [];
 
   retrievData(): void {
     console.log('selected fund is - ' + this.selectedFund);
     this.awsService.getFundInformation().subscribe((data: any[]) => {
-      console.log(data);
-      this.models = data;
+      console.log('body --' + data['body']);
+      const middle = data['body'];
+      console.log('itesms --' + middle['Items']);
+      this.models = middle['Items'];
     });
   }
+
+  exportCSV(): void {
+    console.log('exporting to csv');
+
+    const options = {
+        headers: ['fund', 'UOI'],
+    };
+    new Angular5Csv(this.convertToCSVFormat(), 'distribution', options);
+  }
+
+  convertToCSVFormat(): Array<ExportFileModel> {
+    const csvs: Array<ExportFileModel> = [];
+    this.models.forEach((model) => {
+      const m: ExportFileModel = {
+        fund: model.fund,
+        uoi: model.uoi
+      };
+      csvs.push(m);
+    });
+    return csvs;
+  }
+
 }

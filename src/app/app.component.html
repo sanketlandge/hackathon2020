@@ -384,8 +384,8 @@
   <!-- Terminal -->
 
   <div class="container">
-    <table class="table table-bordered table-striped">
-      <tr class="text_bold">
+    <table class="table table-bordered table-striped" >
+      <tr class="text_bold text-center">
         <td>Description </td>
         <td>Amount</td>
         <td>DPU</td>
@@ -413,7 +413,13 @@
     </table>
   </div>
   <!-- Links -->
-
+  <div class="container">
+    <div class="row">
+      <div class="col text-right">
+        <button mat-raised-button  (click)="exportCSV()">Export to CSV</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
